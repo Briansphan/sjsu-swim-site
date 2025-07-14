@@ -13,8 +13,14 @@ export default function SwimClubLanding() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="bg-yellow-400 p-2 rounded-full">
-                <Waves className="h-6 w-6 text-blue-600" />
+              <div className="bg-white p-2 rounded-full">
+                <Image
+                  src="/San-Jose-State-Spartans-logo.png"
+                  alt="SJSU Spartans Logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold">SJSU Swim Club</h1>
@@ -315,8 +321,14 @@ export default function SwimClubLanding() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="bg-yellow-400 p-2 rounded-full">
-                <Waves className="h-6 w-6 text-blue-600" />
+              <div className="bg-white p-2 rounded-full">
+                <Image
+                  src="/San-Jose-State-Spartans-logo.png"
+                  alt="SJSU Spartans Logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                />
               </div>
               <div>
                 <h3 className="font-bold">SJSU Swim Club</h3>
