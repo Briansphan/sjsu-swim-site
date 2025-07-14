@@ -73,7 +73,7 @@ export default function SwimClubLanding() {
           {/* Hero Image */}
           <div className="relative rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/placeholder.svg?height=400&width=800"
+              src="/AdobeStock_44759320.jpeg?height=400&width=800"
               alt="Swimming pool with lanes underwater view"
               width={800}
               height={400}
