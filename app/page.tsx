@@ -1,11 +1,91 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Waves, Users, Trophy, Calendar, MapPin, Clock, Mail, Phone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect } from "react"
+
+const events = [
+  {
+    type: "Competition",
+    badgeClass: "bg-blue-100 text-blue-600",
+    icon: <Calendar className="h-5 w-5 text-gray-400" />,
+    title: "Regional Championships",
+    description: "Join us for the annual regional swimming championships. All team members are encouraged to participate.",
+    location: "Aquatic Center",
+    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
+    date: "2024-08-15",
+    time: "10:00 AM",
+  },
+  {
+    type: "Training",
+    badgeClass: "bg-green-100 text-green-600",
+    icon: <Calendar className="h-5 w-5 text-gray-400" />,
+    title: "Technique Workshop",
+    description: "Special workshop focusing on stroke technique and breathing patterns for all skill levels.",
+    location: "Pool Deck",
+    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
+    date: "2024-08-22",
+    time: "2:00 PM",
+  },
+  {
+    type: "Social",
+    badgeClass: "bg-yellow-100 text-yellow-600",
+    icon: <Calendar className="h-5 w-5 text-gray-400" />,
+    title: "Team BBQ",
+    description: "End of season celebration with food, games, and team bonding activities for all members.",
+    location: "Campus Quad",
+    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
+    date: "2024-09-01",
+    time: "5:00 PM",
+  },
+  {
+    type: "Social",
+    badgeClass: "bg-yellow-100 text-yellow-600",
+    icon: <Calendar className="h-5 w-5 text-gray-400" />,
+    title: "Team BBQ",
+    description: "End of season celebration with food, games, and team bonding activities for all members.",
+    location: "Campus Quad",
+    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
+    date: "2024-09-15",
+    time: "6:00 PM",
+  },
+  {
+    type: "Social",
+    badgeClass: "bg-yellow-100 text-yellow-600",
+    icon: <Calendar className="h-5 w-5 text-gray-400" />,
+    title: "Team BBQ",
+    description: "End of season celebration with food, games, and team bonding activities for all members.",
+    location: "Campus Quad",
+    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
+    date: "2024-09-29",
+    time: "4:00 PM",
+  },
+  // Add more events as needed
+]
 
 export default function SwimClubLanding() {
+  useEffect(() => {
+    // This is needed to prevent a horizontal scrollbar on mobile when using overflow-x-auto
+    // on a grid that has min-width: 0 and max-width: none.
+    // See https://stackoverflow.com/questions/64009700/overflow-x-auto-on-grid-with-min-width-0-and-max-width-none-causes-horizontal-scrollbar
+    const updateGridWidth = () => {
+      const grid = document.querySelector(
+        ".md\\:grid-cols-2.lg\\:grid-cols-3.md\\:overflow-x-visible.hide-scrollbar"
+      ) as HTMLElement | null;
+      if (grid) {
+        grid.style.width = "100%"; // Force grid to take full width
+      }
+    };
+
+    updateGridWidth(); // Set initial width
+    window.addEventListener("resize", updateGridWidth);
+    return () => window.removeEventListener("resize", updateGridWidth);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -178,14 +258,14 @@ export default function SwimClubLanding() {
             </div>
 
             <div className="relative">
-              <Image
+              {/* <Image
                 src="/placeholder.svg?height=400&width=600"
                 alt="Swimming pool facility"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-xl"
-              />
-            </div>
+              /> */}
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLwMwG72SDTj-mRY2yCt0Rbp7TPG1R_InMN6dcZ9BQr4cPaA/viewform?embedded=true" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>            </div>
           </div>
         </div>
       </section>
@@ -198,64 +278,32 @@ export default function SwimClubLanding() {
             <p className="text-lg text-gray-600">Stay updated with our latest activities and competitions</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <Badge className="bg-blue-100 text-blue-600">Competition</Badge>
-                  <Calendar className="h-5 w-5 text-gray-400" />
-                </div>
-                <CardTitle className="text-lg">Regional Championships</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="mb-4">
-                  Join us for the annual regional swimming championships. All team members are encouraged to
-                  participate.
-                </CardDescription>
-                <div className="flex items-center text-sm text-gray-500">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  Aquatic Center
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <Badge className="bg-green-100 text-green-600">Training</Badge>
-                  <Calendar className="h-5 w-5 text-gray-400" />
-                </div>
-                <CardTitle className="text-lg">Technique Workshop</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="mb-4">
-                  Special workshop focusing on stroke technique and breathing patterns for all skill levels.
-                </CardDescription>
-                <div className="flex items-center text-sm text-gray-500">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  Pool Deck
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <Badge className="bg-yellow-100 text-yellow-600">Social</Badge>
-                  <Calendar className="h-5 w-5 text-gray-400" />
-                </div>
-                <CardTitle className="text-lg">Team BBQ</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="mb-4">
-                  End of season celebration with food, games, and team bonding activities for all members.
-                </CardDescription>
-                <div className="flex items-center text-sm text-gray-500">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  Campus Quad
-                </div>
-              </CardContent>
-            </Card>
+          {/* Responsive Carousel/Horizontal Scroll */}
+          <div className="flex overflow-x-auto gap-6 hide-scrollbar py-2">
+            {events.map((event, idx) => (
+              <Card key={idx} className="min-w-[300px] max-w-xs flex-shrink-0 hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <Badge className={event.badgeClass}>{event.type}</Badge>
+                    {event.icon}
+                  </div>
+                  <CardTitle className="text-lg">{event.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="mb-4">{event.description}</CardDescription>
+                  <div className="flex items-center text-sm text-gray-500 mb-1">
+                    <span className="mr-2">📅</span>
+                    <span>{event.date}</span>
+                    <span className="mx-2">|</span>
+                    <span>⏰ {event.time}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-500">
+                    {event.locationIcon}
+                    {event.location}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
