@@ -7,65 +7,7 @@ import { Waves, Users, Trophy, Calendar, MapPin, Clock, Mail, Phone } from "luci
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
-
-const events = [
-  {
-    type: "Competition",
-    badgeClass: "bg-blue-100 text-blue-600",
-    icon: <Calendar className="h-5 w-5 text-gray-400" />,
-    title: "Regional Championships",
-    description: "Join us for the annual regional swimming championships. All team members are encouraged to participate.",
-    location: "Aquatic Center",
-    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
-    date: "2024-08-15",
-    time: "10:00 AM",
-  },
-  {
-    type: "Training",
-    badgeClass: "bg-green-100 text-green-600",
-    icon: <Calendar className="h-5 w-5 text-gray-400" />,
-    title: "Technique Workshop",
-    description: "Special workshop focusing on stroke technique and breathing patterns for all skill levels.",
-    location: "Pool Deck",
-    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
-    date: "2024-08-22",
-    time: "2:00 PM",
-  },
-  {
-    type: "Social",
-    badgeClass: "bg-yellow-100 text-yellow-600",
-    icon: <Calendar className="h-5 w-5 text-gray-400" />,
-    title: "Team BBQ",
-    description: "End of season celebration with food, games, and team bonding activities for all members.",
-    location: "Campus Quad",
-    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
-    date: "2024-09-01",
-    time: "5:00 PM",
-  },
-  {
-    type: "Social",
-    badgeClass: "bg-yellow-100 text-yellow-600",
-    icon: <Calendar className="h-5 w-5 text-gray-400" />,
-    title: "Team BBQ",
-    description: "End of season celebration with food, games, and team bonding activities for all members.",
-    location: "Campus Quad",
-    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
-    date: "2024-09-15",
-    time: "6:00 PM",
-  },
-  {
-    type: "Social",
-    badgeClass: "bg-yellow-100 text-yellow-600",
-    icon: <Calendar className="h-5 w-5 text-gray-400" />,
-    title: "Team BBQ",
-    description: "End of season celebration with food, games, and team bonding activities for all members.",
-    location: "Campus Quad",
-    locationIcon: <MapPin className="h-4 w-4 mr-1" />,
-    date: "2024-09-29",
-    time: "4:00 PM",
-  },
-  // Add more events as needed
-]
+import { events, Event } from "@/lib/events"
 
 export default function SwimClubLanding() {
   useEffect(() => {
@@ -85,6 +27,16 @@ export default function SwimClubLanding() {
     window.addEventListener("resize", updateGridWidth);
     return () => window.removeEventListener("resize", updateGridWidth);
   }, []);
+
+  // Filter events to only show those in the future (not past the current day)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set to midnight for accurate comparison
+  const futureEvents = events.filter((event: Event) => {
+    // Parse event date as local midnight
+    const [year, month, day] = event.date.split('-').map(Number);
+    const eventDate = new Date(year, month - 1, day).setHours(0, 0, 0, 0);
+    return eventDate >= today.getTime();
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -124,7 +76,9 @@ export default function SwimClubLanding() {
                 Contact
               </Link>
             </nav>
-            <Button className="bg-yellow-400 text-blue-600 hover:bg-yellow-300 font-semibold">Join Now</Button>
+            <Link href="#join">
+              <Button className="bg-yellow-400 text-blue-600 hover:bg-yellow-300 font-semibold">Join Now</Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -143,9 +97,11 @@ export default function SwimClubLanding() {
               our community of passionate athletes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-                Join the Team
-              </Button>
+              <Link href="#join">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+                  Join the Team
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"
@@ -171,12 +127,15 @@ export default function SwimClubLanding() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section id="about" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Join SJSU Swim Club?</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Experience the benefits of being part of our vibrant swimming community
+            </p>
+            <p className="text-lg md:text-xl font-medium text-gray-800 leading-relaxed tracking-tight max-w-3xl mx-auto mt-6 mb-2">
+              Joining the <span className="font-semibold text-blue-700">SJSU Swim Club</span> is more than just swimming laps—it's about becoming part of a supportive and energetic community. Whether you're looking to compete at a high level, improve your fitness, or simply make new friends, our club offers opportunities for everyone. Experience the thrill of competition, the discipline of regular training, and the camaraderie that comes from being part of a team. As a student-athlete, you'll develop lifelong skills in <span className="font-semibold text-blue-700">leadership</span>, <span className="font-semibold text-blue-700">time management</span>, and <span className="font-semibold text-blue-700">teamwork</span>, all while making unforgettable memories in and out of the pool.
             </p>
           </div>
 
@@ -240,21 +199,18 @@ export default function SwimClubLanding() {
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-yellow-400" />
+                  <Clock className="h-10 w-10 text-yellow-400" />
                   <span>Flexible training schedules</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Users className="h-5 w-5 text-yellow-400" />
+                  <Users className="h-10 w-10 text-yellow-400" />
                   <span>All skill levels welcome</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Trophy className="h-5 w-5 text-yellow-400" />
+                  <Trophy className="h-10 w-10 text-yellow-400" />
                   <span>Competitive opportunities</span>
                 </div>
               </div>
-              <Button size="lg" className="bg-yellow-400 text-blue-600 hover:bg-yellow-300 font-semibold px-8 py-3">
-                Join Us Today
-              </Button>
             </div>
 
             <div className="relative">
@@ -265,7 +221,7 @@ export default function SwimClubLanding() {
                 height={400}
                 className="rounded-lg shadow-xl"
               /> */}
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLwMwG72SDTj-mRY2yCt0Rbp7TPG1R_InMN6dcZ9BQr4cPaA/viewform?embedded=true" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>            </div>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLwMwG72SDTj-mRY2yCt0Rbp7TPG1R_InMN6dcZ9BQr4cPaA/viewform?embedded=true" width="640" height="640">Loading…</iframe>            </div>
           </div>
         </div>
       </section>
@@ -280,30 +236,50 @@ export default function SwimClubLanding() {
 
           {/* Responsive Carousel/Horizontal Scroll */}
           <div className="flex overflow-x-auto gap-6 hide-scrollbar py-2">
-            {events.map((event, idx) => (
-              <Card key={idx} className="min-w-[300px] max-w-xs flex-shrink-0 hover:shadow-lg transition-shadow">
+            {futureEvents.length === 0 ? (
+              <Card className="min-w-[300px] max-w-xs flex-shrink-0 hover:shadow-lg transition-shadow bg-gray-50 border-dashed border-2 border-gray-300">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <Badge className={event.badgeClass}>{event.type}</Badge>
-                    {event.icon}
+                    <Badge className="bg-gray-200 text-gray-500">Info</Badge>
                   </div>
-                  <CardTitle className="text-lg">{event.title}</CardTitle>
+                  <CardTitle className="text-lg text-gray-700">No events right now!</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="mb-4">{event.description}</CardDescription>
-                  <div className="flex items-center text-sm text-gray-500 mb-1">
+                  <CardDescription className="mb-4 text-gray-500">
+                    Please check back soon for upcoming swim club events. Stay tuned for updates!
+                  </CardDescription>
+                  <div className="flex items-center text-sm text-gray-400">
                     <span className="mr-2">📅</span>
-                    <span>{event.date}</span>
-                    <span className="mx-2">|</span>
-                    <span>⏰ {event.time}</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-500">
-                    {event.locationIcon}
-                    {event.location}
+                    <span>All caught up</span>
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            ) : (
+              futureEvents.map((event: Event, idx: number) => (
+                <Card key={idx} className="min-w-[300px] max-w-xs flex-shrink-0 hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <Badge className={event.badgeClass}>{event.type}</Badge>
+                      <Calendar className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <CardTitle className="text-lg">{event.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="mb-4">{event.description}</CardDescription>
+                    <div className="flex items-center text-sm text-gray-500 mb-1">
+                      <span className="mr-2">📅</span>
+                      <span>{event.date}</span>
+                      <span className="mx-2">|</span>
+                      <span>⏰ {event.time}</span>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <MapPin className="h-4 w-4 mr-1" />
+                      {event.location}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
         </div>
       </section>
