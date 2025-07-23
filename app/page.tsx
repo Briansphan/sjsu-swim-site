@@ -98,7 +98,7 @@ export default function SwimClubLanding() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="#join">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+                <Button size="lg" className="bg-[#0055a2] hover:bg-[#004278] text-white px-8 py-3">
                   Join the Team
                 </Button>
               </Link>
@@ -128,11 +128,11 @@ export default function SwimClubLanding() {
 
       {/* Features Section */}
       <section id="about" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4"> 
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Join SJSU Swim Club?</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience the benefits of being part of our vibrant swimming community
+              Experience the benefits of being part of our vibrant swimming community.
             </p>
             <p className="text-lg md:text-xl font-medium text-gray-800 leading-relaxed tracking-tight max-w-3xl mx-auto mt-6 mb-2">
               Joining the <span className="font-semibold text-blue-700">SJSU Swim Club</span> is more than just swimming laps—it's about becoming part of a supportive and energetic community. Whether you're looking to compete at a high level, improve your fitness, or simply make new friends, our club offers opportunities for everyone. Experience the thrill of competition, the discipline of regular training, and the camaraderie that comes from being part of a team. As a student-athlete, you'll develop lifelong skills in <span className="font-semibold text-blue-700">leadership</span>, <span className="font-semibold text-blue-700">time management</span>, and <span className="font-semibold text-blue-700">teamwork</span>, all while making unforgettable memories in and out of the pool.
