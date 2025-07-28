@@ -45,15 +45,17 @@ export default function SwimClubLanding() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="bg-white p-2 rounded-full">
-                <Image
-                  src="/San-Jose-State-Spartans-logo.png"
-                  alt="SJSU Spartans Logo"
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 object-contain"
-                />
-              </div>
+              <Link href="https://www.sjsu.edu/" target="_blank" rel="noopener noreferrer">
+                <div className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer">
+                  <Image
+                    src="/San-Jose-State-Spartans-logo.png"
+                    alt="SJSU Spartans Logo"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-contain"
+                  />
+                </div>
+              </Link>
               <div>
                 <h1 className="text-xl font-bold">SJSU Swim Club</h1>
                 <p className="text-sm text-blue-100">Spartan Aquatics</p>
@@ -117,16 +119,18 @@ export default function SwimClubLanding() {
           </div>
 
           {/* Hero Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/AdobeStock_44759320.jpeg?height=400&width=800"
-              alt="Swimming pool with lanes underwater view"
-              width={800}
-              height={400}
-              className="w-full h-[400px] object-cover"
-            />
-            <div className="absolute inset-0 bg-blue-600/20"></div>
-          </div>
+          <Link href="https://www.sjsu.edu/" target="_blank" rel="noopener noreferrer">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow cursor-pointer">
+              <Image
+                src="/AdobeStock_44759320.jpeg?height=400&width=800"
+                alt="Swimming pool with lanes underwater view"
+                width={800}
+                height={400}
+                className="w-full h-[400px] object-cover"
+              />
+              <div className="absolute inset-0 bg-blue-600/20"></div>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -249,7 +253,7 @@ export default function SwimClubLanding() {
                   alt="SJSU Swim Club Coach"
                   width={500}
                   height={600}
-                  className="rounded-xl shadow-2xl object-cover w-full h-[500px]"
+                  className="rounded-xl shadow-2xl object-cover w-full h-[500px] drop-shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
               </div>
