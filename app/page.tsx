@@ -87,7 +87,9 @@ export default function SwimClubLanding() {
       <section id="home" className="relative bg-gradient-to-b from-blue-50 to-white">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <Badge className="bg-yellow-400 text-blue-600 mb-4 text-sm font-semibold">San Jose State University</Badge>
+            <Link href="https://www.sjsu.edu/" target="_blank" rel="noopener noreferrer">
+              <Badge className="bg-yellow-400 text-blue-600 mb-4 text-sm font-semibold hover:bg-yellow-300 transition-colors cursor-pointer">San Jose State University</Badge>
+            </Link>
             <h1 className="text-5xl md:text-6xl font-bold text-blue-600 mb-6">
               Welcome to the
               <span className="block text-yellow-500">SJSU Swim Club</span>
@@ -102,13 +104,15 @@ export default function SwimClubLanding() {
                   Join the Team
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 bg-transparent"
-              >
-                Learn More
-              </Button>
+              <Link href="#about">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 bg-transparent"
+                >
+                  Learn More
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -187,6 +191,73 @@ export default function SwimClubLanding() {
         </div>
       </section>
 
+      {/* About the Coach Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Meet Your Coach</h2>
+              <div className="space-y-6 text-gray-700">
+                <p className="text-lg leading-relaxed">
+                  Our head coach brings a wealth of experience and passion to the SJSU Swim Club. With over 15 years of swimming experience and 3 years as an age group coach, our coach is dedicated to helping every swimmer reach their full potential.
+                </p>
+                
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-900">Experience & Credentials</h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-start space-x-2">
+                      <span className="text-blue-600 font-semibold">•</span>
+                      <span><strong>Age Group Coach:</strong> 3 years of coaching experience working with swimmers of all skill levels</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-blue-600 font-semibold">•</span>
+                      <span><strong>Swimming Experience:</strong> Over 15 years of competitive and recreational swimming</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-blue-600 font-semibold">•</span>
+                      <span><strong>Ironman 70.3 Competitor:</strong> Endurance athlete with experience in triathlon events</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-blue-600 font-semibold">•</span>
+                      <span><strong>Mikes Bikes Development Team:</strong> Elite cycling team athlete with cross-training expertise</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-900">Coaching Philosophy</h3>
+                  <p className="text-gray-600">
+                    Our coach believes in developing well-rounded athletes through a combination of technical swimming skills, 
+                    cross-training, and mental preparation. With experience in multiple endurance sports, our coach brings 
+                    a unique perspective to swim training that emphasizes overall athletic development.
+                  </p>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <p className="text-blue-800 font-medium">
+                    "Whether you're a beginner learning the basics or an experienced swimmer looking to improve your times, 
+                    I'm here to help you achieve your goals and develop a lifelong love for swimming."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <Image
+                  src="/Coach Photo.jpg"
+                  alt="SJSU Swim Club Coach"
+                  width={500}
+                  height={600}
+                  className="rounded-xl shadow-2xl object-cover w-full h-[500px]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Join Section */}
       <section id="join" className="py-16 bg-gradient-to-r from-blue-600 to-blue-700">
         <div className="container mx-auto px-4">
@@ -222,6 +293,112 @@ export default function SwimClubLanding() {
                 className="rounded-lg shadow-xl"
               /> */}
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLwMwG72SDTj-mRY2yCt0Rbp7TPG1R_InMN6dcZ9BQr4cPaA/viewform?embedded=true" width="640" height="640">Loading…</iframe>            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Modules Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Three Core Pillars</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              The SJSU Swim Club is built on three fundamental pillars that create a comprehensive swimming experience. 
+              Each pillar is designed to develop different aspects of your swimming journey and personal growth.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Community Module */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Community</h3>
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  At the heart of our swim club is a vibrant, supportive community that welcomes swimmers of all skill levels. 
+                  Whether you're a complete beginner or an experienced competitor, you'll find your place here.
+                </p>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-gray-900">What You'll Experience:</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• Weekly team bonding activities and social events</li>
+                    <li>• Mentorship programs pairing experienced swimmers with newcomers</li>
+                    <li>• Study groups and academic support from fellow student-athletes</li>
+                    <li>• Leadership opportunities within the club structure</li>
+                    <li>• Lifelong friendships with like-minded individuals</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-gray-500">
+                  Our community extends beyond the pool - we're a family that supports each other in and out of the water.
+                </p>
+              </div>
+            </div>
+
+            {/* Competition Module */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Trophy className="h-8 w-8 text-yellow-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Competition</h3>
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  Challenge yourself and push your limits through structured competitive opportunities. 
+                  Our competition program is designed to help you achieve personal bests and represent SJSU with pride.
+                </p>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-gray-900">Competitive Opportunities:</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• Local and regional swim meets throughout the season</li>
+                    <li>• Intercollegiate competitions against other universities</li>
+                    <li>• Club championships and record-breaking attempts</li>
+                    <li>• Specialized training for different stroke techniques</li>
+                    <li>• Performance tracking and goal-setting support</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-gray-500">
+                  Whether you're aiming for personal records or team victories, our competitive program will help you excel.
+                </p>
+              </div>
+            </div>
+
+            {/* Training Module */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Waves className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Training</h3>
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  Develop your swimming skills through professional coaching and structured training programs. 
+                  Our comprehensive training approach focuses on technique, endurance, and overall fitness.
+                </p>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-gray-900">Training Components:</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• Professional coaching from certified swim instructors</li>
+                    <li>• Personalized training plans based on skill level</li>
+                    <li>• Technique workshops for all four competitive strokes</li>
+                    <li>• Strength and conditioning programs</li>
+                    <li>• Recovery and injury prevention education</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-gray-500">
+                  Our training programs are designed to help you become a stronger, more efficient swimmer.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-700 max-w-4xl mx-auto">
+              These three pillars work together to create a holistic swimming experience. 
+              <span className="font-semibold text-blue-600"> Community </span>provides the foundation, 
+              <span className="font-semibold text-yellow-600"> Competition </span>drives improvement, and 
+              <span className="font-semibold text-green-600"> Training </span>builds the skills. 
+              Join us to experience the perfect balance of all three!
+            </p>
           </div>
         </div>
       </section>
